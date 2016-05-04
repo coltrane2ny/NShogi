@@ -4,23 +4,9 @@ using System.Linq;
 using System.Text;
 using NShogi;
 
-namespace ConsoleApplication
+namespace NShogi.Engine
 {
-    interface IEngine
-    {
-        Move WaitMove(Position position);
-    }
-
-    class RandomEngine : IEngine
-    {
-        public Move WaitMove(Position position)
-        {
-            var moves = position.GetLegalMovesAndDrops(position.Turn);
-            return moves.ToList()[new Random().Next(moves.Count())];
-        }
-    }
-
-    class HumanEngine : IEngine
+    public class HumanEngine : IEngine
     {
         public Move WaitMove(Position position)
         {

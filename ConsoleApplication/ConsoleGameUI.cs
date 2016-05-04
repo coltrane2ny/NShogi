@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Text;
 using NShogi;
+using NShogi.Engine;
 
 namespace ConsoleApplication
 {
@@ -9,7 +10,7 @@ namespace ConsoleApplication
     {
         IEngine black;
         IEngine white;
-        
+
         public void Start()
         {
             Console.WriteLine("Start.");
@@ -30,7 +31,7 @@ namespace ConsoleApplication
             sw.Stop();
             Console.WriteLine(candidates);
             Console.WriteLine(String.Format("Time to get legal moves: {0}", sw.Elapsed));
-            
+
             return position.Turn == Color.Black ? black.WaitMove(position) : white.WaitMove(position);
         }
 
