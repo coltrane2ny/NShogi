@@ -10,7 +10,7 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            new Game(new ConsoleGameUI()).Start();
+            new Game(new ConsoleGameUI()).Start(new Position());
         }
     }
 }

@@ -18,9 +18,9 @@ namespace ConsoleApplication
             white = new RandomEngine();
         }
 
-        public Move WaitMove(Position position)
+        public Move WaitMove(Position position, Score score)
         {
-            PrintPosition(position);
+            PrintPosition(position, score);
             StringBuilder candidates = new StringBuilder("合法手: ");
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -35,12 +35,12 @@ namespace ConsoleApplication
             return position.Turn == Color.Black ? black.WaitMove(position) : white.WaitMove(position);
         }
 
-        private void PrintPosition(Position position)
+        private void PrintPosition(Position position, Score score)
         {
             StringBuilder sb = new StringBuilder()
-                .AppendFormat("{0} 手目", position.CurrentMoveCount);
-            if (position.CurrentMoveCount > 0)
-                sb.AppendFormat("  {0} まで", position.LastMove);
+                .AppendFormat("{0} 手目", score.Count);
+            if (score.Count > 0)
+                sb.AppendFormat("  {0} まで", LastMoveToString(position, score.LastMove));
             sb.Append("\n");
 
             for (int rank = 1; rank <= Board.RankNum; rank++)
@@ -65,6 +65,19 @@ namespace ConsoleApplication
             return piece == Piece.Empty
                 ? String.Format(" {0}", piece.ToPieceName())
                 : String.Format("{0}{1}", piece.ToColor() == Color.Black ? "+" : "-", piece.ToPieceName());
+        }
+        
+        private static string LastMoveToString(Position position, Move move)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("{0}", position.Turn == Color.Black ? "△" : "▲");
+            
+            if (move.IsDrop)
+                sb.AppendFormat("{0}{1}打", move.DstIndex, move.PieceType.ToPieceName());
+            else
+                sb.AppendFormat("{0}{1}{2} ({3})", move.DstIndex, position.Board[move.DstIndex].ToPieceName(), move.Promote ? "成" : "", move.SrcIndex);
+
+            return sb.ToString();
         }
     }
 }

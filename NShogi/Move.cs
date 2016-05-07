@@ -64,7 +64,7 @@ namespace NShogi
                     yield return candidate;
             }
         }
-        
+
         // 持ち駒を打てるかどうかの単純チェック
         public static bool CanDrop(Piece p, int index)
         {
@@ -186,7 +186,7 @@ namespace NShogi
             yield return index + 10;
             yield return index + 11;
         }
-        
+
         private static IEnumerable<int> GetHorceMoves(int index)
         {
             foreach (var i in GetBishopMoves(index))
@@ -198,7 +198,7 @@ namespace NShogi
             yield return index + 1;
             yield return index + 10;
         }
-        
+
         private static IEnumerable<int> GetDragonMoves(int index)
         {
             foreach (var i in GetRookMoves(index))
@@ -210,12 +210,12 @@ namespace NShogi
             yield return index + 9;
             yield return index + 11;
         }
-        
+
         private static bool CheckBlackPawnLanceDrop(int index)
         {
             return Board.GetRank(index) > 1;
         }
-        
+
         private static bool CheckWhitePawnLanceDrop(int index)
         {
             return Board.GetRank(index) < 9;

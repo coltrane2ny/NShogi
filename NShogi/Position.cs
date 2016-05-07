@@ -12,7 +12,6 @@ namespace NShogi
         public Color Turn { get; private set; }
         public Hand BlackHand { get; private set; }
         public Hand WhiteHand { get; private set; }
-        public string LastMove { get; private set; }
 
         public Position()
         {
@@ -20,7 +19,6 @@ namespace NShogi
             Turn = Color.Black;
             BlackHand = new Hand();
             WhiteHand = new Hand();
-            LastMove = "";
         }
 
         public Position(Position position)
@@ -41,7 +39,6 @@ namespace NShogi
             next.Turn = TurnOver(Turn);
             next.Board[src] = Piece.Empty;
             next.Board[dst] = promote ? srcPiece.Promote() : srcPiece;
-            next.LastMove = String.Format("{0}{1}{2}{3} ({4})", Turn.ToRecordName(), dst, srcPiece.ToPieceName(), promote ? "成" : "", src);
 
             if (Turn == Color.Black)
                 next.BlackHand.Add(dstPiece);
@@ -57,7 +54,6 @@ namespace NShogi
             Position next = new Position(this);
             next.Turn = TurnOver(Turn);
             next.Board[dst] = piece;
-            next.LastMove = String.Format("{0}{1}{2}打", Turn.ToRecordName(), dst, piece.ToPieceName());
 
             if (Turn == Color.Black)
                 next.BlackHand.Remove(pieceType);
