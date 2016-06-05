@@ -1,12 +1,12 @@
 {
   "version": "1.0.0-*",
-  "description": "ConsoleApplication Console Application",
-  "authors": [ "Yuta Nikaido" ],
+  "description": "NShogi User Interface",
+  "authors": [ "coltrane2ny" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "tooling": {
-    "defaultNamespace": "ConsoleApplication"
+    "defaultNamespace": "NShogi.UI"
   },
 
   "dependencies": {
@@ -15,7 +15,7 @@
   },
 
   "commands": {
-    "ConsoleApplication": "ConsoleApplication"
+    "NShogi.UI": "NShogi.UI"
   },
 
   "frameworks": {

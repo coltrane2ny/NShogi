@@ -4,7 +4,7 @@ using System.Text;
 using NShogi;
 using NShogi.Engine;
 
-namespace ConsoleApplication
+namespace NShogi.UI
 {
     class ConsoleGameUI : IGameUI
     {

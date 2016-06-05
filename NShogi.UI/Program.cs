@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NShogi;
 
-namespace ConsoleApplication
+namespace NShogi.UI
 {
     public class Program
     {

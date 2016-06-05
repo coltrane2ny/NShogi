@@ -1,7 +1,7 @@
 {
     "version": "1.0.0-*",
-    "description": "",
-    "authors": [ "" ],
+    "description": "NShogi Unit Tests",
+    "authors": [ "coltrane2ny" ],
     "tags": [ "" ],
     "projectUrl": "",
     "licenseUrl": "",
