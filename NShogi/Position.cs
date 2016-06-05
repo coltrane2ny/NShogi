@@ -62,18 +62,6 @@ namespace NShogi
             return next;
         }
 
-        public IEnumerable<Move> GetLegalMovesAndDrops(Color color)
-        {
-            foreach (var move in Board.GetLegalMoves(color))
-            {
-                yield return move;
-            }
-            foreach (var drop in Board.GetLegalDrops(color, color == Color.Black ? BlackHand : WhiteHand))
-            {
-                yield return drop;
-            }
-        }
-        
         // 先後交代する
         private Color TurnOver(Color turn)
         {

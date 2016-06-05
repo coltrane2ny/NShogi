@@ -10,7 +10,7 @@ namespace NShogi.Engine
     {
         public Move WaitMove(Position position)
         {
-            var moves = position.GetLegalMovesAndDrops(position.Turn);
+            var moves = MoveGenerator.GetMoves(position);
             return moves.ToList()[new Random().Next(moves.Count())];
         }
     }

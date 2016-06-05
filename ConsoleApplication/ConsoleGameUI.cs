@@ -24,9 +24,9 @@ namespace ConsoleApplication
             StringBuilder candidates = new StringBuilder("合法手: ");
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            foreach (var move in position.GetLegalMovesAndDrops(position.Turn))
+            foreach (var move in MoveGenerator.GetMoves(position))
             {
-                candidates.AppendFormat("{0}{1} ", move.DstIndex, move.PieceType.ToPieceName());
+                candidates.AppendFormat("{0}{1}{2} ", move.DstIndex, move.PieceType.ToPieceName(), move.Promote ? "成" : "");
             }
             sw.Stop();
             Console.WriteLine(candidates);
