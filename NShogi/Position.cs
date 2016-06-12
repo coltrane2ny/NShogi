@@ -4,6 +4,13 @@ using System.Linq;
 
 namespace NShogi
 {
+    public interface IPosition
+    {
+        Color Turn { get; }
+        int Evaluation { get; }
+        IEnumerable<IPosition> NextPositions { get; }
+    }
+
     // 局面
     public class Position
     {
