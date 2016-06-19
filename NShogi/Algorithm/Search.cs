@@ -6,18 +6,35 @@ namespace NShogi.Algorithm
 {
     public class Search
     {
-        public static int NegaMax(IPosition p, int depth)
+        public static int NegaMax(IPosition p, uint depth)
         {
-            if (depth < 0) throw new ArgumentException(String.Format("depth は　0 以上でなければなりません。depth: {0}", depth));
-            if (depth == 0) return p.Turn == Color.Black ? p.Evaluation : -p.Evaluation;
+            if (depth == 0) return Evaluate(p);
 
+            depth--;
             int max = int.MinValue;
             foreach (var np in p.NextPositions)
             {
-                int e = -NegaMax(np, depth - 1);
-                if (e > max) max = e;
+                max = Math.Max(max, -NegaMax(np, depth));
             }
             return max;
+        }
+
+        public static int AlphaBeta(IPosition p, uint depth, int alpha = -9999, int beta = 9999)
+        {
+            if (depth == 0) return Evaluate(p);
+
+            depth--;
+            foreach (var np in p.NextPositions)
+            {
+                alpha = Math.Max(alpha, -AlphaBeta(np, depth, -beta, -alpha));
+                if (alpha >= beta) return alpha;
+            }
+            return alpha;
+        }
+
+        private static int Evaluate(IPosition p)
+        {
+            return p.Turn == Color.Black ? p.Evaluation : -p.Evaluation;
         }
     }
 }

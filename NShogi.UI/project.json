@@ -10,8 +10,8 @@
   },
 
   "dependencies": {
-      "NShogi": "",
-      "NShogi.Engine": ""
+      "NShogi": "1.0.0-*",
+      "NShogi.Engine": "1.0.0-*"
   },
 
   "commands": {
